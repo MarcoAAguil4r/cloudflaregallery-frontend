@@ -1,4 +1,4 @@
-// ✅ App.js actualizado para mostrar imagen ampliada en ventana modal dentro de la misma página
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -16,7 +16,7 @@ export default function ImageGallery() {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/images');
+      const response = await axios.get('https://3523110229-marco5b-api.refaccionariayserviciosxpress.online/images');
       setImages(response.data.result);
     } catch (err) {
       console.error('Error fetching images:', err);
@@ -30,7 +30,7 @@ export default function ImageGallery() {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:3000/images/upload', formData);
+      const response = await axios.post('https://3523110229-marco5b-api.refaccionariayserviciosxpress.online/images/upload', formData);
       const uploadedImage = response.data.result;
       setImages(prev => [...prev, uploadedImage]);
       setFile(null);
@@ -45,7 +45,7 @@ export default function ImageGallery() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/images/delete/${id}`);
+      await axios.delete(`https://3523110229-marco5b-api.refaccionariayserviciosxpress.online/images/delete/${id}`);
       setImages(prev => prev.filter(image => image.id !== id));
     } catch (err) {
       console.error('Delete error:', err);
